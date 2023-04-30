@@ -7,10 +7,34 @@ function playRound(playerSelection, computerSelection) {
                 gameOverMessage = "It's a Tie !";
                 break;
             case "scissors":
-                gameOverMessage = "You lost ! The computer wins this round !";
+                gameOverMessage = "You lose ! The computer wins this round !";
                 break;
             case "paper":
                 gameOverMessage = "You defeated the computer !";
+                break;
+        }
+    } else if (computerSelection == "paper") {
+        switch (playerSelection) {
+            case "paper":
+                gameOverMessage = "It's a tie !";
+                break;
+            case "rock":
+                gameOverMessage = "You lose ! Paper beats rock !";
+                break;
+            case "scissors":
+                gameOverMessage = "You win ! Scissors wins over paper.";
+                break;
+        }
+    } else if (computerSelection == "scissors") {
+        switch (playerSelection) {
+            case "scissors":
+                gameOverMessage = "It's a tie !";
+                break;
+            case "paper":
+                gameOverMessage = "You lose ! Computer wins !";
+                break;
+            case "rock":
+                gameOverMessage = "You win this round !"
                 break;
         }
     }
@@ -21,5 +45,6 @@ function getComputerChoice() {
     return arrGameItems[(Math.floor(Math.random() * arrGameItems.length))]
 }
 
-console.log(playRound("RoCk", getComputerChoice()));
-
+const playerSelection = prompt("Choose your item (rock, paper or scissors): ")
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
