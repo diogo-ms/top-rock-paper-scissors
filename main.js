@@ -1,3 +1,11 @@
+let score = 0;
+function game() {
+    for(let i; i <= 5; i++) {
+        const playerSelection = prompt("Choose your item (rock, paper or scissors): ")
+        const computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+    }
+}
 function playRound(playerSelection, computerSelection) {
     let gameOverMessage;
     playerSelection = playerSelection.toLowerCase()
@@ -11,6 +19,7 @@ function playRound(playerSelection, computerSelection) {
                 break;
             case "paper":
                 gameOverMessage = "You defeated the computer !";
+                score++;
                 break;
         }
     } else if (computerSelection == "paper") {
@@ -23,6 +32,7 @@ function playRound(playerSelection, computerSelection) {
                 break;
             case "scissors":
                 gameOverMessage = "You win ! Scissors wins over paper.";
+                score++;
                 break;
         }
     } else if (computerSelection == "scissors") {
@@ -35,6 +45,7 @@ function playRound(playerSelection, computerSelection) {
                 break;
             case "rock":
                 gameOverMessage = "You win this round !"
+                score++;
                 break;
         }
     }
@@ -45,6 +56,7 @@ function getComputerChoice() {
     return arrGameItems[(Math.floor(Math.random() * arrGameItems.length))]
 }
 
-const playerSelection = prompt("Choose your item (rock, paper or scissors): ")
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+// const playerSelection = prompt("Choose your item (rock, paper or scissors): ")
+// const computerSelection = getComputerChoice();
+game();
+console.log("Your score is " + score + "/5");
