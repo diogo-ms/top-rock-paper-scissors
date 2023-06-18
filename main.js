@@ -1,11 +1,20 @@
 let score = 0;
-function game() {
-    for(let i; i <= 5; i++) {
-        const playerSelection = prompt("Choose your item (rock, paper or scissors): ")
-        const computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
-    }
-}
+
+const computerSelection = getComputerChoice();
+
+const paperButton = document.createElement("button");
+paperButton.addEventListener("click", () => {
+    console.log(playRound("paper", computerSelection));
+})
+const scissorsButton = document.createElement("button");
+scissorsButton.addEventListener("click", () => {
+    console.log(playRound("scissors", computerSelection));
+})
+const rockButton = document.createElement("button");
+rockButton.addEventListener("click", () => {
+    console.log(playRound("rock", computerSelection));
+})
+
 function playRound(playerSelection, computerSelection) {
     let gameOverMessage;
     playerSelection = playerSelection.toLowerCase()
